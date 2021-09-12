@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: alstlrdl1!
+      MYSQL_USER: minshik
+      MYSQL_PASSWORD: alstlrdl1!
+      TZ: Asia/Seoul
+    volumes:
+    - './database/data:/var/lib/mysql'
+    - './database/conf.d:/etc/mysql/conf.d'
+    - './database/init-sql/:/docker-entrypoint-initdb.d/'
+    ports:
+    - 3307:3306
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--log-bin=true', '--binlog-format=MIXED']
+
+networks:
+  default:
+    external: true
+    name: msdocker-network
