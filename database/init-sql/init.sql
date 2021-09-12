@@ -1,4 +1,6 @@
-CREATE DATABASE IF NOT EXISTS firstDB; CREATE DATABASE IF NOT EXISTS secondDB;
+CREATE DATABASE IF NOT EXISTS testDB;
+
+USE testDB;
 
 create table team(
     id long auto_increment primary key,
@@ -15,4 +17,5 @@ create table member (
     foreign key (team_id) references team(id)
 );
 
-insert member(name, age, sex) values ('민식', 21, 'M'), ('지수', 22, 'W')
+insert member(name, age, sex) values ('민식', 21, 'M'), ('지수', 22, 'W');
+insert team(team_name) values ('A'), ('B');
